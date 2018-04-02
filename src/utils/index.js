@@ -1,0 +1,1 @@
+export { default as walkSync } from './walk-sync';

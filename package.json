@@ -1,0 +1,40 @@
+{
+  "name": "react-ssr-with-hot-reloading",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:JBowns/react-ssr-with-hot-reloading.git",
+  "author": "Jacob Bowns <jacob.bowns@sky.uk>",
+  "license": "MIT",
+  "scripts": {
+    "preview": "yarn clean && NODE_ENV=development node-hot --config webpack.server.js",
+    "start": "NODE_ENV=production node dist/server.js",
+    "build": "yarn clean && yarn build:client && yarn build:server",
+    "build:client": "NODE_ENV=production webpack --config webpack.client.js",
+    "build:server": "NODE_ENV=production webpack --config webpack.server.js",
+    "clean": "rm -rf dist"
+  },
+  "dependencies": {
+    "console-stamp": "^0.2.6",
+    "express": "^4.16.3",
+    "morgan": "^1.9.0",
+    "react": "^16.3.0",
+    "react-dom": "^16.3.0"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-core": "^6.26.0",
+    "babel-loader": "^7.1.4",
+    "babel-plugin-syntax-dynamic-import": "^6.18.0",
+    "babel-preset-env": "^1.6.1",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-react": "^6.24.1",
+    "node-hot-loader": "^1.6.0",
+    "webpack": "^4.4.1",
+    "webpack-cli": "^2.0.13",
+    "webpack-dev-middleware": "^3.1.0",
+    "webpack-dev-server": "^3.1.1",
+    "webpack-hot-middleware": "^2.21.2",
+    "webpack-merge": "^4.1.2",
+    "webpack-node-externals": "^1.6.0"
+  }
+}
