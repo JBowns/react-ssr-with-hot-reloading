@@ -10,6 +10,7 @@ router.get('/', function(req, res, next) {
 <html>
 <head>
   <title>Page Title</title>
+  <link href="/main.css" rel="stylesheet" type="text/css"></link>
 </head>
 <body>
   <div id='react-root'>${renderToString(<App/>)}</div>
