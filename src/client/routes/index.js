@@ -20,7 +20,9 @@ if (process.env.NODE_ENV === 'development') {
     const compiler = webpack(webpackConfig);
 
     router.use(webpackDevMiddleware(compiler, {
-      logLevel: 'warn', stats: 'errors-only'
+      logLevel: 'warn',
+      stats: 'errors-only',
+      serverSideRender: true
     }));
 
     router.use(webpackHotMiddleware(compiler));
@@ -28,7 +30,7 @@ if (process.env.NODE_ENV === 'development') {
   });
 
 } else {
-  router.use('/', express.static(path.resolve(__dirname, 'public')));
+  router.use('/assets', express.static(path.resolve(__dirname, 'assets')));
 }
 
 export default router;

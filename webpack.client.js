@@ -2,15 +2,38 @@ const path = require('path');
 const webpack = require('webpack');
 const merge = require('webpack-merge');
 const common = require('./webpack.common');
+const StatsWebpackPlugin = require('stats-webpack-plugin');
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 let config = merge(common, {
   entry: [
     './src/client/components'
   ],
+  module: {
+    rules: [
+      {
+        test: /\.scss$/,
+        use: ExtractTextPlugin.extract({
+          use: [{
+            loader: "css-loader"
+          }, {
+            loader: "sass-loader"
+          }],
+          fallback: "style-loader"
+        })
+      }
+    ]
+  },
+  plugins: [
+    new ExtractTextPlugin({
+      filename: `assets/[name].css`,
+    }),
+    new StatsWebpackPlugin('stats.json')
+  ],
   output: {
-    path: path.resolve(__dirname, 'dist/public'),
+    path: path.resolve(__dirname, 'dist'),
     publicPath: '/',
-    filename: 'client.js'
+    filename: 'assets/client.js'
   }
 });
 

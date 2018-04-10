@@ -2,6 +2,7 @@ const path = require('path');
 const webpack = require('webpack');
 const merge = require('webpack-merge');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const StatsWebpackPlugin = require('stats-webpack-plugin');
 
 const mode = process.env.NODE_ENV;
 
@@ -17,16 +18,6 @@ let config = {
           loader: "css-loader"
         }]
       }, {
-        test: /\.scss$/,
-        use: ExtractTextPlugin.extract({
-          use: [{
-            loader: "css-loader"
-          }, {
-            loader: "sass-loader"
-          }],
-          fallback: "style-loader"
-        })
-      }, {
         test: /\.(js|jsx)$/,
         exclude: /node_modules/,
         use: "babel-loader"
@@ -34,9 +25,6 @@ let config = {
     ]
   },
   plugins: [
-    new ExtractTextPlugin({
-      filename: `[name].css`,
-    }),
     new webpack.NamedModulesPlugin(),
     new webpack.NoEmitOnErrorsPlugin()
   ],

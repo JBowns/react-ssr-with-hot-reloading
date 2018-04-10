@@ -7,7 +7,7 @@
   "license": "MIT",
   "scripts": {
     "preview": "NODE_ENV=development node-hot --config webpack.server.js",
-    "kill:preview": "kill $(ps -ef | awk '/node-hot/ {print $2}')",
+    "kill:preview": "kill $(ps -ef | awk '!/awk/ && /node-hot/ {print $2}')",
     "start": "NODE_ENV=production node dist/server.js",
     "build": "yarn clean && yarn build:client && yarn build:server",
     "build:client": "NODE_ENV=production webpack --config webpack.client.js",
@@ -19,7 +19,11 @@
     "express": "^4.16.3",
     "morgan": "^1.9.0",
     "react": "^16.3.0",
-    "react-dom": "^16.3.0"
+    "react-dom": "^16.3.0",
+    "react-router": "^4.2.0",
+    "react-router-dom": "^4.2.2",
+    "react-universal-component": "^2.8.4",
+    "webpack-flush-chunks": "^1.2.3"
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",
@@ -34,6 +38,7 @@
     "node-hot-loader": "^1.7.0",
     "node-sass": "^4.7.2",
     "sass-loader": "^6.0.7",
+    "stats-webpack-plugin": "^0.6.2",
     "style-loader": "^0.20.3",
     "webpack": "^4.4.1",
     "webpack-cli": "^2.0.13",

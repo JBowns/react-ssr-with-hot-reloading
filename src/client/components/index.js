@@ -1,10 +1,16 @@
 import React from 'react';
 import { hydrate } from 'react-dom';
+import { BrowserRouter as Router } from 'react-router-dom';
 
-import App from '../../shared/components/App.jsx';
+import App from '../../shared/App.jsx';
 
 const render = Component => {
-  hydrate(<Component />, document.getElementById('react-root'));
+  hydrate(
+    <Router>
+      <Component/>
+    </Router>,
+    document.getElementById('react-root')
+  );
 };
 
 render(App);

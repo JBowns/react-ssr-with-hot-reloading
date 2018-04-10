@@ -11,9 +11,19 @@ let config = merge(common, {
     __dirname: false,
     __filename: false,
   },
-  externals: [
-    nodeExternals({})
-  ],
+  module: {
+    rules: [
+      {
+        test: /\.scss$/,
+        use: [{
+          loader: "css-loader"
+        }, {
+          loader: "sass-loader"
+        }]
+      }
+    ]
+  },
+  externals: nodeExternals({}),
   resolve: {
     extensions: ['.js', '.jsx'],
     modules: [
